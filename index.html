@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyecto académico Invernadero Automatizado de la Universidad Mariano Gálvez de Guatemala.">
+  <title>Invernadero Automatizado</title>
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos: primero el original, después las mejoras -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mejoras.css">
+     <link rel="stylesheet" href="galeria.css">
+</head>
+
+<body>
+
+  <!-- MENÚ PRINCIPAL -->
+  <header class="site-header">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark">✳</span>
+      <span>Invernadero <b>Automatizado</b></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#proyecto">Proyecto</a>
+      <a href="#objetivos">Objetivos</a>
+      <a href="#solucion">Solución</a>
+      <a href="#presupuesto">Presupuesto</a>
+      <a href="#cronograma">Cronograma</a>
+      <a href="#riesgos">Riesgos</a>
+      <a href="#galeria">Galería</a>
+      <a href="#videos">Videos</a>
+      <a href="#conclusiones">Conclusiones</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- PORTADA -->
+    <section class="hero" id="inicio">
+      <div class="hero-shade"></div>
+
+      <div class="hero-content">
+        <p class="eyebrow">
+          <span class="eyebrow-line"></span>
+          Proyecto académico · Electrónica Digital
+        </p>
+
+        <h1>
+          Invernadero<br>
+          <span>Automatizado</span>
+        </h1>
+
+        <p class="university">Universidad Mariano Gálvez de Guatemala</p>
+        <p class="degree">Ingeniería en Sistemas de la Información y Ciencias de la Computación</p>
+        <p class="course">Electrónica Digital</p>
+        <p class="teacher">Ing. Jorge Luis Salguero Galicia</p>
+
+        <a class="button button-light" href="#proyecto">
+          Conocer el proyecto <span>↘</span>
+        </a>
+      </div>
+
+      <div class="hero-note">
+        <span class="pulse"></span>
+        ESP32 · Sensores · Control local y remoto
+      </div>
+    </section>
+
+    <!-- INTEGRANTES -->
+    <section class="section team-section">
+      <div class="section-heading compact">
+        <p class="eyebrow">Equipo de trabajo</p>
+        <h2>Integrantes del proyecto</h2>
+      </div>
+
+      <div class="team-grid">
+        <article class="team-card">
+          <span class="team-number">1</span>
+          <h3>Jorge Daniel Aguilar García</h3>
+          <p>Carnét: 3590-23-5606</p>
+        </article>
+        <article class="team-card">
+          <span class="team-number">2</span>
+          <h3>Jorge Israel Toc Obregon</h3>
+          <p>Carnét: 3590-18-11382</p>
+        </article>
+        <!-- 
+          <article class="team-card">
+          <span class="team-number">03</span>
+          <h3>Angela Gabriela Cujcuj Choy</h3>
+          <p>Carnét: 3590-24-7708</p>
+        </article>
+         --> 
+        <article class="team-card">
+          <span class="team-number">04</span>
+          <h3>José Daniel Chacón Najarro</h3>
+          <p>Carnét: 3590-24-6059</p>
+        </article>
+        <!-- 
+        <article class="team-card">
+          <span class="team-number">05</span>
+          <h3>Belsin David Moscoso Pérez</h3>
+          <p>Carnét: 3590-22-12924</p>
+        </article>
+        -->
+      </div>
+    </section>
+
+    <!-- DESCRIPCIÓN DEL PROYECTO -->
+    <section class="section section-grid" id="proyecto">
+      <div class="section-heading">
+        <p class="eyebrow"> Contexto</p>
+        <h2>¿Qué nos solicitaron?</h2>
+        <p>
+          Frutos de Guatemala, ubicada en Zacapa, necesita mejorar
+          el control de su invernadero ante las altas temperaturas,
+          la baja humedad relativa y los periodos de escasez hídrica.
+        </p>
+      </div>
+
+      <div class="content-panel">
+        <div class="panel-icon">⌁</div>
+        <h3>El problema</h3>
+        <p>
+          La gestión manual puede dificultar el control de las
+          condiciones ambientales, el uso eficiente del agua y
+          la respuesta ante posibles fallas o accesos no autorizados.
+        </p>
+        <div class="tag-row">
+          <span>Control ambiental</span>
+          <span>Riego</span>
+          <span>Seguridad</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBJETIVOS -->
+    <section class="section objectives-section" id="objetivos">
+      <div class="section-heading">
+        <p class="eyebrow"> Propósito</p>
+        <h2>Objetivos del proyecto</h2>
+      </div>
+
+      <div class="objective-feature">
+        <span class="feature-label">Objetivo general</span>
+        <p>
+          Diseñar e implementar un sistema embebido basado en ESP32
+          que integre monitoreo ambiental, riego, ventilación,
+          iluminación, evaluación del suelo y control de acceso,
+          con operación autónoma y remota.
+        </p>
+      </div>
+
+      <div class="objective-grid">
+        <article class="objective-card">
+          <span>01</span>
+          <h3>Monitorear</h3>
+          <p>Medir temperatura, humedad, iluminación y calidad del aire.</p>
+        </article>
+        <article class="objective-card">
+          <span>02</span>
+          <h3>Evaluar el suelo</h3>
+          <p>Medir humedad, pH, conductividad eléctrica y niveles de NPK.</p>
+        </article>
+        <article class="objective-card">
+          <span>03</span>
+          <h3>Automatizar</h3>
+          <p>Controlar el riego, la ventilación y la iluminación.</p>
+        </article>
+        <article class="objective-card">
+          <span>04</span>
+          <h3>Proteger</h3>
+          <p>Incorporar control de acceso biométrico y alarmas.</p>
+        </article>
+        <article class="objective-card">
+          <span>05</span>
+          <h3>Control remoto</h3>
+          <p>
+            Permitir el monitoreo y la intervención mediante
+            la plataforma prevista para el proyecto.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SOLUCIÓN TÉCNICA -->
+    <section class="section solution-section" id="solucion">
+      <div class="section-heading">
+        <p class="eyebrow">03 · Diseño técnico</p>
+        <h2>La solución propuesta</h2>
+        <p>
+          El ESP32 funciona como unidad central de control e integra
+          los sensores y actuadores del invernadero.
+        </p>
+      </div>
+
+      <div class="system-grid">
+        <article class="system-card">
+          <div class="system-symbol">⌁</div>
+          <h3>Salud del suelo</h3>
+          <p>Sonda 7 en 1 para mediciones de humedad, temperatura, pH, conductividad eléctrica y NPK.</p>
+        </article>
+        <article class="system-card">
+          <div class="system-symbol">◉</div>
+          <h3>Monitoreo ambiental</h3>
+          <p>Sensores DHT21, BH1750, MQ135 y MQ7 para las mediciones ambientales contempladas.</p>
+        </article>
+        <article class="system-card">
+          <div class="system-symbol">↗</div>
+          <h3>Actuadores</h3>
+          <p>Control de bomba de agua, ventilador e iluminación LED.</p>
+        </article>
+        <article class="system-card">
+          <div class="system-symbol">⌑</div>
+          <h3>Acceso y seguridad</h3>
+          <p>Lector de huellas, chapa electromecánica, sensor de movimiento y alarma.</p>
+        </article>
+        <article class="system-card">
+          <div class="system-symbol">⌘</div>
+          <h3>Monitoreo remoto</h3>
+          <p>Consulta de datos y control mediante la plataforma prevista en el diseño.</p>
+        </article>
+        <article class="system-card">
+          <div class="system-symbol">⏻</div>
+          <h3>Continuidad operativa</h3>
+          <p>Medidas de protección y funcionamiento local contempladas en el proyecto.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRESUPUESTO -->
+    <section class="section budget-section" id="presupuesto">
+      <div class="section-heading">
+        <p class="eyebrow">04 · Recursos</p>
+        <h2>Presupuesto del proyecto</h2>
+        <p>
+          Presentación de los costos electrónicos y de mano de obra
+          en apartados separados.
+        </p>
+      </div>
+
+      <div class="budget-summary">
+        <article class="metric-card">
+          <span class="metric-label">Presupuesto electrónico</span>
+          <strong>Q 2,039.00</strong>
+          <small>Según el importe reportado</small>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Mano de obra</span>
+          <strong>Q 2,005.00</strong>
+          <small>Según el presupuesto de trabajo</small>
+        </article>
+        <article class="metric-card metric-dark">
+          <span class="metric-label">Suma de ambos conceptos</span>
+          <strong>Q 4,044.00</strong>
+          <small>Materiales y mano de obra</small>
+        </article>
+      </div>
+
+      <div class="budget-columns">
+
+        <div class="table-card">
+          <div class="table-heading">
+            <div>
+              <p class="eyebrow">Detalle 01</p>
+              <h3>Componentes electrónicos</h3>
+            </div>
+            <span class="table-total">Q 2,039.00</span>
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Cantidad</th>
+                  <th>Precio unitario</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody id="materialsTable">
+                <!-- JavaScript genera las filas del presupuesto. -->
+              </tbody>
+            </table>
+          </div>
+
+          <p class="table-note">El detalle se genera desde script.js.</p>
+        </div>
+
+        <div class="table-card labor-card">
+          <div class="table-heading">
+            <div>
+              <p class="eyebrow">Detalle 02</p>
+              <h3>Mano de obra</h3>
+            </div>
+            <span class="table-total">Q 2,005.00</span>
+          </div>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Actividad</th>
+                  <th>Horas</th>
+                  <th>Valor/hora</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Diseño y planificación</td><td>8</td><td>Q 30</td><td>Q 240</td></tr>
+                <tr><td>Ensamble y conexiones</td><td>12</td><td>Q 30</td><td>Q 360</td></tr>
+                <tr><td>Programación del ESP32</td><td>15</td><td>Q 35</td><td>Q 525</td></tr>
+                <tr><td>Integración con RainMaker</td><td>8</td><td>Q 35</td><td>Q 280</td></tr>
+                <tr><td>Pruebas y corrección</td><td>10</td><td>Q 30</td><td>Q 300</td></tr>
+                <tr><td>Documentación e informe</td><td>8</td><td>Q 25</td><td>Q 200</td></tr>
+                <tr><td>Ensayos y presentación</td><td>4</td><td>Q 25</td><td>Q 100</td></tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Total</th>
+                  <th>65</th>
+                  <th></th>
+                  <th>Q 2,005</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="contingency-note">
+        <span class="note-icon">＋</span>
+        <p>
+          <b>Contingencia reportada: Q 204.00.</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- CRONOGRAMA GANTT -->
+    <section class="section gantt-section" id="cronograma">
+      <div class="section-heading">
+        <p class="eyebrow">Planificación</p>
+        <h2>Cronograma de trabajo</h2>
+        <p>
+        </p>
+      </div>
+
+      <div class="gantt-card">
+
+        <div class="gantt-toolbar">
+          <div>
+            <h3>Plan de actividades</h3>
+            <p>Agosto · Septiembre · Octubre</p>
+          </div>
+          <span class="gantt-badge">
+            <span class="pulse"></span>
+            5 fases
+          </span>
+        </div>
+
+        <div class="gantt-scroll">
+          <div class="gantt-grid">
+
+            <div class="gantt-corner">Fase / actividad</div>
+
+            <div class="gantt-months">
+              <span>Agosto</span>
+              <span>Septiembre</span>
+              <span>Octubre</span>
+            </div>
+
+            <div class="gantt-periods">
+              <span>23–28</span>
+              <span>1–4</span>
+              <span>5–11</span>
+              <span>12–18</span>
+              <span>19–25</span>
+              <span>26–30</span>
+              <span>2</span>
+              <span>3–9</span>
+              <span>10–16</span>
+              <span>17–23</span>
+              <span>24–30</span>
+            </div>
+
+            <div class="gantt-phase phase-one">
+              <b>FASE 1</b>
+              <span>Diseño y propuesta</span>
+            </div>
+            <div class="gantt-track">
+              <i class="gantt-bar bar-one" style="--start:0;--span:2" title="Diseño y propuesta"></i>
+            </div>
+
+            <div class="gantt-phase phase-two">
+              <b>FASE 2</b>
+              <span>Análisis del proyecto</span>
+            </div>
+            <div class="gantt-track">
+              <i class="gantt-bar bar-two" style="--start:1;--span:3" title="Análisis del proyecto"></i>
+            </div>
+
+            <div class="gantt-phase phase-three">
+              <b>FASE 3</b>
+              <span>Ensamble</span>
+            </div>
+            <div class="gantt-track">
+              <i class="gantt-bar bar-three" style="--start:3;--span:3" title="Ensamble"></i>
+            </div>
+
+            <div class="gantt-phase phase-four">
+              <b>FASE 4</b>
+              <span>Programación de componentes</span>
+            </div>
+            <div class="gantt-track">
+              <i class="gantt-bar bar-four" style="--start:6;--span:3" title="Programación de componentes"></i>
+            </div>
+
+            <div class="gantt-phase phase-five">
+              <b>FASE 5</b>
+              <span>Pruebas y entrega</span>
+            </div>
+            <div class="gantt-track">
+              <i class="gantt-bar bar-five" style="--start:8;--span:3" title="Pruebas y entrega"></i>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="gantt-legend">
+          <span><i class="legend-dot dot-one"></i> Diseño</span>
+          <span><i class="legend-dot dot-two"></i> Análisis</span>
+          <span><i class="legend-dot dot-three"></i> Ensamble</span>
+          <span><i class="legend-dot dot-four"></i> Programación</span>
+          <span><i class="legend-dot dot-five"></i> Pruebas y entrega</span>
+        </div>
+
+        <p class="source-note">
+        </p>
+      </div>
+
+      <div class="phase-details" id="phaseDetails">
+        <!-- JavaScript genera las actividades de cada fase. -->
+      </div>
+    </section>
+
+    <!-- MATRIZ Y LISTADO DE RIESGOS -->
+    <section class="section risks-section" id="riesgos">
+      <div class="section-heading">
+        <p class="eyebrow"> Prevención</p>
+        <h2>Análisis de riesgos y contingencias</h2>
+        <p>
+          Niveles de riesgo y sus medidas de mitigación.
+        </p>
+      </div>
+
+      <div class="risk-levels">
+        <div class="risk-level risk-low">
+          <span class="risk-dot"></span>
+          <div><b>Bajo</b><small>Menor impacto</small></div>
+          <strong>7</strong>
+        </div>
+        <div class="risk-level risk-medium">
+          <span class="risk-dot"></span>
+          <div><b>Medio</b><small>Impacto moderado</small></div>
+          <strong>15</strong>
+        </div>
+        <div class="risk-level risk-high">
+          <span class="risk-dot"></span>
+          <div><b>Alto</b><small>Impacto significativo</small></div>
+          <strong>10</strong>
+        </div>
+        <div class="risk-level risk-critical">
+          <span class="risk-dot"></span>
+          <div><b>Crítico</b><small>Mayor prioridad</small></div>
+          <strong>1</strong>
+        </div>
+      </div>
+
+      <div class="risk-dashboard">
+
+        <div class="matrix-card">
+          <div class="subheading">
+            <div>
+              <p class="eyebrow">Visualización</p>
+              <h3>Matriz de probabilidad e impacto</h3>
+            </div>
+            <span class="info-mark" title="La matriz muestra cómo se relacionan la probabilidad y el impacto.">i</span>
+          </div>
+
+          <div class="matrix-wrap">
+            <div class="y-axis">Probabilidad</div>
+
+            <div class="matrix-main">
+              <div class="matrix-ylabels">
+                <span>Alta (3)</span>
+                <span>Media (2)</span>
+                <span>Baja (1)</span>
+              </div>
+
+              <div class="risk-matrix">
+                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad alta, impacto bajo">3<br><small>Medio</small></button>
+                <button class="matrix-cell cell-high" data-risk-filter="high" aria-label="Probabilidad alta, impacto medio">6<br><small>Alto</small></button>
+                <button class="matrix-cell cell-critical" data-risk-filter="critical" aria-label="Probabilidad alta, impacto alto">9<br><small>Crítico</small></button>
+                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad media, impacto bajo">2<br><small>Bajo</small></button>
+                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad media, impacto medio">4<br><small>Medio</small></button>
+                <button class="matrix-cell cell-high" data-risk-filter="high" aria-label="Probabilidad media, impacto alto">6<br><small>Alto</small></button>
+                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad baja, impacto bajo">1<br><small>Bajo</small></button>
+                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad baja, impacto medio">2<br><small>Bajo</small></button>
+                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad baja, impacto alto">3<br><small>Medio</small></button>
+              </div>
+
+              <div class="matrix-xlabels">
+                <span>Bajo (1)</span>
+                <span>Medio (2)</span>
+                <span>Alto (3)</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="matrix-caption">
+            Selecciona una celda para consultar los riesgos
+            de la categoría correspondiente.
+          </p>
+        </div>
+
+        <div class="risk-stats">
+          <div class="subheading">
+            <div>
+              <p class="eyebrow">Resumen</p>
+              <h3>Distribución de riesgos</h3>
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <span>Bajo</span>
+            <div class="stat-track"><i style="--value:21.2%;--stat-color:var(--risk-low)"></i></div>
+            <b>7 <small>21.2%</small></b>
+          </div>
+          <div class="stat-row">
+            <span>Medio</span>
+            <div class="stat-track"><i style="--value:45.5%;--stat-color:var(--risk-medium)"></i></div>
+            <b>15 <small>45.5%</small></b>
+          </div>
+          <div class="stat-row">
+            <span>Alto</span>
+            <div class="stat-track"><i style="--value:30.3%;--stat-color:var(--risk-high)"></i></div>
+            <b>10 <small>30.3%</small></b>
+          </div>
+          <div class="stat-row">
+            <span>Crítico</span>
+            <div class="stat-track"><i style="--value:3%;--stat-color:var(--risk-critical)"></i></div>
+            <b>1 <small>3.0%</small></b>
+          </div>
+
+          <div class="risk-total">
+            <span>Total identificado</span>
+            <strong>33</strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="risk-list-heading">
+        <div>
+          <p class="eyebrow">Detalle</p>
+          <h3>Riesgos y medidas de mitigación</h3>
+        </div>
+        <button class="text-button" id="clearRiskFilter">Ver todos</button>
+      </div>
+
+      <div class="risk-filters" id="riskFilters">
+        <button class="filter-chip active" data-filter="all">Todos <span>33</span></button>
+        <button class="filter-chip" data-filter="low">Bajo <span>7</span></button>
+        <button class="filter-chip" data-filter="medium">Medio <span>15</span></button>
+        <button class="filter-chip" data-filter="high">Alto <span>10</span></button>
+        <button class="filter-chip" data-filter="critical">Crítico <span>1</span></button>
+      </div>
+
+      <div class="risk-list" id="riskList">
+        <!-- JavaScript genera las fichas de riesgos. -->
+      </div>
+    </section>
+
+    <!-- GALERÍA TIPO RULETA  -->
+    <section class="section gallery-section" id="galeria">
+      <div class="section-heading">
+        <p class="eyebrow"> Evidencia visual</p>
+        <h2>Galería de la maqueta</h2>
+        <p>Recorrido visual .</p>
+      </div>
+
+      <div class="roulette" id="roulette">
+
+        <button class="roulette-arrow roulette-prev" id="galleryPrev" aria-label="Imagen anterior">‹</button>
+
+        <div class="roulette-stage" id="rouletteStage" aria-live="polite">
+          <figure class="roulette-slide" data-title="Primeros Avanzes del Invernadero Frutos de Guatemala" data-desc="Armado de la estructura frutos de Guatemala ">
+            <img src="Fotos/Estructura.png" alt="Primeros Avanzes del Invernadero Frutos de Guatemala">
+          </figure>
+          <figure class="roulette-slide" data-title=" Integración de los Materiales" data-desc="Ventilador instalado en la parte superior de la pared trasera para extraer el aire caliente.">
+            <img src="Fotos/ventilador.png" alt="Ventilador" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de los Materiales" data-desc="Tira LED ubicada en la parte superior del techo a lo largo de la viga , con la luz dirigida hacia las plantas.">
+            <img src="Fotos/tiraLed.png" alt="Tira LED " loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de los Materiales" data-desc="Sensor de gas y calidad de aire colocados en las esquinas superiores se colocaron de esa manera ya que el humo tiende a subir">
+            <img src="Fotos/sensoresAire.png" alt="Sensor de aire" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de los Materiales" data-desc="Sensor de temperatura ubicado dentro del invernadero con el fin de mantener una temperatura optima para los Frutos.">
+            <img src="Fotos/sensorTemperatura.png" alt="Sensor de temperatura" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de los Materiales" data-desc="Electrónica de control ubicada afuera para tener aislado los modulos de rele, Esp32 de la humedad . ">
+            <img src="Fotos/electronicaControl.png" alt="Integracion de la electronica de control" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Protección de los Materiales de Control" data-desc="Caja de protección para cubrir toda la electronica de control con las aberturas necesarias para el Cableado.">
+            <img src="Fotos/cajaAislamiento.png" alt="Caja de aislamiento de Control" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Primera Vista del Invernadero" data-desc="Primer entregable de la Maqueta.">
+            <img src="Fotos/AvancesPrototipo.png" alt="Avances de Maqueta" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de los Materiales" data-desc="Integracion visual por medio de un display para tener un control del invernadero.">
+            <img src="Fotos/Pantalla.jpeg" alt="Integracion de la Pantalla " loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de Seguridad" data-desc="Sensor de Huella implementado para tener acceso al invernadero con un control de intentos">
+            <img src="Fotos/Huella.jpeg" alt="Huella para acceso" loading="lazy">
+          </figure>
+           <figure class="roulette-slide" data-title="Sensor de Huella dactilar" data-desc="Lector biométrico">
+            <img src="Fotos/HuellaIngreso.jpeg" alt="Sensor de Huella" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de Seguridad" data-desc="Sensor de movimiento colocado adentro del invernadero para mantener un control.">
+            <img src="Fotos/SensorPir.jpeg" alt="Sensor pir de movimiento" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Integración de los Materiales" data-desc="Colocacion del deposito de agua con el sensor Ultrasonico para tener un control del agua y evitar que la bomba falle.">
+            <img src="Fotos/SensorUltrasonico.jpeg" alt="Sensor para control del agua" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Monitoreo por RainMaker" data-desc="Implementacion de RainMaker para tener un monitoreo de forma manual con el invernadero.">
+            <img src="Fotos/raidMaker.jpeg" alt="Monitoreo manual" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Monitoreo por RainMaker" data-desc="">
+            <img src="Fotos/rainMaker1.jpeg" alt="Monitoreo de clima" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Fase Final" data-desc="Prototipo Final del invernadero.">
+            <img src="Fotos/InvernaderoFinal.jpeg" alt="InvernaderoFinal" loading="lazy">
+          </figure>
+          <figure class="roulette-slide" data-title="Fase Final" data-desc="Prototipo Final del invernadero.">
+            <img src="Fotos/InvernaderoFinalfase.jpeg" alt="Integración del prototipo" loading="lazy">
+          </figure>
+        </div>
+
+        <button class="roulette-arrow roulette-next" id="galleryNext" aria-label="Imagen siguiente">›</button>
+
+      </div>
+
+      <div class="gallery-caption">
+        <div>
+          <span class="gallery-counter" id="galleryCounter">Imagen 1 de 17</span>
+          <h3 id="galleryTitle">Vista general de la maqueta</h3>
+          <p id="galleryDescription">Vista general de la maqueta demostrativa del invernadero automatizado.</p>
+        </div>
+        <div class="gallery-dots" id="galleryDots" aria-label="Elegir imagen"></div>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="section video-section" id="videos">
+      <div class="section-heading">
+        <p class="eyebrow">Demostración</p>
+        <h2>El proyecto en funcionamiento</h2>
+        <p>Videos demostrativos del prototipo.</p>
+      </div>
+
+      <article class="video-card video-feature">
+        <div class="video-frame" id="videoFrame1">
+          <video controls preload="metadata" playsinline aria-label="Video de funcionamiento del sistema">
+            <source src="Videos/demostracion-1.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder">
+            <span>▶</span>
+            <b>Video de demostración</b>
+          </div>
+        </div>
+
+        <div class="video-meta">
+          <span>VIDEO</span>
+          <h3>Funcionamiento del sistema</h3>
+          <p>Demostración del funcionamiento y seguridad.</p>
+        </div>
+      </article>
+
+      
+      <!-- SEGUNDO VIDEO -->
+      <article class="video-card video-feature">
+        <div class="video-frame" id="videoFrame2">
+          <video controls preload="metadata" playsinline
+                 aria-label="Segundo video del proyecto">
+            <source src="Videos/demostracion-2.mp4" type="video/mp4">
+          </video>
+          <div class="video-placeholder">
+            <span>▶</span>
+            <b>Segundo video del proyecto</b>
+          </div>
+        </div>
+
+        <div class="video-meta">
+          <span>VIDEO</span>
+          <h3>El proyecto en funcionamiento</h3>
+          <p>Demostración adicional del prototipo.</p>
+        </div>
+      </article>
+
+
+    </section>
+
+    <!-- CONCLUSIONES -->
+    <section class="section conclusions-section" id="conclusiones">
+      <div class="section-heading">
+        <p class="eyebrow"> Cierre</p>
+        <h2>Conclusiones y recomendaciones</h2>
+      </div>
+
+      <div class="conclusion-grid">
+        <article class="conclusion-card">
+          <span>01</span>
+          <h3>Automatización integral</h3>
+          <p>
+            La propuesta integra monitoreo ambiental, evaluación
+            del suelo, actuación automática y seguridad biométrica.
+          </p>
+          <small>Recomendación: validar los parámetros de funcionamiento antes de su aplicación.</small>
+        </article>
+
+        <article class="conclusion-card">
+          <span>02</span>
+          <h3>Continuidad operativa</h3>
+          <p>
+            El diseño contempla el funcionamiento local ante
+            una pérdida de conexión Wi-Fi.
+          </p>
+          <small>Recomendación: realizar pruebas de desconexión y recuperación.</small>
+        </article>
+
+        <article class="conclusion-card">
+          <span>03</span>
+          <h3>Protección y seguridad</h3>
+          <p>
+            El proyecto considera medidas de protección
+            eléctrica y control de acceso.
+          </p>
+          <small>Recomendación: verificar los mecanismos de seguridad durante las pruebas.</small>
+        </article>
+      </div>
+
+      <div class="references-panel">
+        <div>
+          <p class="eyebrow">Referencias</p>
+          <h3>E-grafías y anexos</h3>
+        </div>
+
+        <div class="reference-links">
+          <a href="https://www.espressif.com/en/products/socs/esp32" target="_blank" rel="noopener noreferrer">Espressif Systems ↗</a>
+          <a href="https://learn.adafruit.com/" target="_blank" rel="noopener noreferrer">Adafruit ↗</a>
+          <a href="https://learn.sparkfun.com/" target="_blank" rel="noopener noreferrer">SparkFun ↗</a>
+          <a href="https://thingspeak.com/" target="_blank" rel="noopener noreferrer">ThingSpeak ↗</a>
+          <a href="https://docs.blynk.io/" target="_blank" rel="noopener noreferrer">Blynk ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#inicio">
+      <span class="brand-mark">✳</span>
+      <span>Invernadero <b>Automatizado</b></span>
+    </a>
+    <p>Universidad Mariano Gálvez de Guatemala · Electrónica Digital</p>
+    <a href="#inicio" class="back-top">Volver al inicio ↑</a>
+  </footer>
+
+  <!-- JavaScript: datos y presupuesto, y luego galería/video/menú -->
+  <script src="script.js"></script>
+  <script src="galeria.js"></script>
+
+</body>
+</html>
