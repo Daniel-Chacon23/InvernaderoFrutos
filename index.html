@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Proyecto académico Invernadero Automatizado de la Universidad Mariano Gálvez de Guatemala.">
   <title>Invernadero Automatizado</title>
-
-  <!-- Tipografías -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tipografía del sistema: sin dependencias externas. -->
 
   <!-- Estilos: primero el original, después las mejoras -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mejoras.css">
-     <link rel="stylesheet" href="galeria.css">
+  <link rel="stylesheet" href="galeria.css">
 </head>
 
 <body>
@@ -39,6 +35,8 @@
       <a href="#galeria">Galería</a>
       <a href="#videos">Videos</a>
       <a href="#conclusiones">Conclusiones</a>
+      <a href="componentes.html">Componentes</a>
+      <a href="aprendimos.html">Lo que aprendimos</a>
     </nav>
   </header>
 
@@ -83,35 +81,11 @@
       </div>
 
       <div class="team-grid">
-        <article class="team-card">
-          <span class="team-number">1</span>
-          <h3>Jorge Daniel Aguilar García</h3>
-          <p>Carnét: 3590-23-5606</p>
-        </article>
-        <article class="team-card">
-          <span class="team-number">2</span>
-          <h3>Jorge Israel Toc Obregon</h3>
-          <p>Carnét: 3590-18-11382</p>
-        </article>
-        <!-- 
-          <article class="team-card">
-          <span class="team-number">03</span>
-          <h3>Angela Gabriela Cujcuj Choy</h3>
-          <p>Carnét: 3590-24-7708</p>
-        </article>
-         --> 
-        <article class="team-card">
-          <span class="team-number">04</span>
-          <h3>José Daniel Chacón Najarro</h3>
-          <p>Carnét: 3590-24-6059</p>
-        </article>
-        <!-- 
-        <article class="team-card">
-          <span class="team-number">05</span>
-          <h3>Belsin David Moscoso Pérez</h3>
-          <p>Carnét: 3590-22-12924</p>
-        </article>
-        -->
+        <article class="team-card"><span class="team-number" aria-hidden="true">Equipo</span><h3>Jorge Daniel Aguilar García</h3><p>Carnét: 3590-23-5606</p></article>
+        <article class="team-card"><span class="team-number" aria-hidden="true">Equipo</span><h3>Jorge Israel Toc Obregón</h3><p>Carnét: 3590-18-11382</p></article>
+        <article class="team-card"><span class="team-number" aria-hidden="true">Equipo</span><h3>Angela Gabriela Cujcuj Choy</h3><p>Carnét: 3590-24-7708</p></article>
+        <article class="team-card"><span class="team-number" aria-hidden="true">Equipo</span><h3>José Daniel Chacón Najarro</h3><p>Carnét: 3590-24-6059</p></article>
+        <article class="team-card"><span class="team-number" aria-hidden="true">Equipo</span><h3>Belsin David Moscoso Pérez</h3><p>Carnét: 3590-22-12924</p></article>
       </div>
     </section>
 
@@ -169,7 +143,7 @@
         <article class="objective-card">
           <span>02</span>
           <h3>Evaluar el suelo</h3>
-          <p>Medir humedad, pH, conductividad eléctrica y niveles de NPK.</p>
+          <p>Medir la humedad del sustrato; las métricas de pH, conductividad y nutrientes quedan como ampliación posterior.</p>
         </article>
         <article class="objective-card">
           <span>03</span>
@@ -186,7 +160,7 @@
           <h3>Control remoto</h3>
           <p>
             Permitir el monitoreo y la intervención mediante
-            la plataforma prevista para el proyecto.
+            ESP RainMaker.
           </p>
         </article>
       </div>
@@ -196,45 +170,63 @@
     <section class="section solution-section" id="solucion">
       <div class="section-heading">
         <p class="eyebrow">03 · Diseño técnico</p>
-        <h2>La solución propuesta</h2>
+        <h2>La solución implementada</h2>
         <p>
           El ESP32 funciona como unidad central de control e integra
           los sensores y actuadores del invernadero.
         </p>
       </div>
 
-      <div class="system-grid">
-        <article class="system-card">
-          <div class="system-symbol">⌁</div>
-          <h3>Salud del suelo</h3>
-          <p>Sonda 7 en 1 para mediciones de humedad, temperatura, pH, conductividad eléctrica y NPK.</p>
+      <p class="section-intro">Vista general: selecciona un subsistema para consultar su función, sensores y actuadores.</p>
+      <div class="system-grid subsystem-overview">
+        <a class="system-card" href="#clima"><div class="system-symbol" aria-hidden="true">°C</div><h3>Clima</h3><p>Temperatura, humedad y ventilación.</p></a>
+        <a class="system-card" href="#riego"><div class="system-symbol" aria-hidden="true">H₂O</div><h3>Riego</h3><p>Humedad del sustrato y nivel del depósito.</p></a>
+        <a class="system-card" href="#luz"><div class="system-symbol" aria-hidden="true">LUX</div><h3>Iluminación</h3><p>Medición de lux y luz de crecimiento.</p></a>
+        <a class="system-card" href="#aire"><div class="system-symbol" aria-hidden="true">AIRE</div><h3>Calidad del aire</h3><p>Índices relativos de MQ-135 y MQ-7.</p></a>
+        <a class="system-card" href="#acceso"><div class="system-symbol" aria-hidden="true">BIO</div><h3>Acceso biométrico</h3><p>Lector de huellas y chapa electromecánica.</p></a>
+        <a class="system-card" href="#alarma"><div class="system-symbol" aria-hidden="true">PIR</div><h3>Alarma perimetral</h3><p>Detección de movimiento y aviso.</p></a>
+      </div>
+
+      <div class="system-grid subsystem-grid">
+        <article class="system-card" id="clima">
+          <div class="system-symbol" aria-hidden="true">01</div>
+          <h3>Clima y ventilación</h3>
+          <p>DHT11 mide temperatura y humedad relativa. El ventilador se gobierna con histéresis y comparte una única decisión con la vigilancia de calidad del aire.</p>
+          <small class="component-used"><b>Componentes utilizados</b> · DHT11 · L298N · Ventilador</small>
         </article>
-        <article class="system-card">
-          <div class="system-symbol">◉</div>
-          <h3>Monitoreo ambiental</h3>
-          <p>Sensores DHT21, BH1750, MQ135 y MQ7 para las mediciones ambientales contempladas.</p>
+        <article class="system-card" id="riego">
+          <div class="system-symbol" aria-hidden="true">02</div>
+          <h3>Riego por pulsos</h3>
+          <p>La sonda FC-28 mide la humedad del sustrato y el HC-SR04 verifica el nivel del depósito antes de permitir el riego.</p>
+          <small class="component-used"><b>Componentes utilizados</b> · FC-28 · HC-SR04 · Bomba</small>
         </article>
-        <article class="system-card">
-          <div class="system-symbol">↗</div>
-          <h3>Actuadores</h3>
-          <p>Control de bomba de agua, ventilador e iluminación LED.</p>
+        <article class="system-card" id="luz">
+          <div class="system-symbol" aria-hidden="true">03</div>
+          <h3>Iluminación de cultivo</h3>
+          <p>El BH1750 mide la iluminancia en lux y permite activar la luz de crecimiento cuando la iluminación baja del umbral configurado.</p>
+          <small class="component-used"><b>Componentes utilizados</b> · BH1750 · Relé · Tira LED</small>
         </article>
-        <article class="system-card">
-          <div class="system-symbol">⌑</div>
-          <h3>Acceso y seguridad</h3>
-          <p>Lector de huellas, chapa electromecánica, sensor de movimiento y alarma.</p>
+        <article class="system-card" id="aire">
+          <div class="system-symbol" aria-hidden="true">04</div>
+          <h3>Calidad del aire</h3>
+          <p>MQ-135 y MQ-7 entregan índices relativos. Sus señales analógicas pasan por divisores resistivos hacia GPIO 34 y GPIO 35.</p>
+          <small class="component-used"><b>Componentes utilizados</b> · MQ-135 · MQ-7 · Ventilador</small>
         </article>
-        <article class="system-card">
-          <div class="system-symbol">⌘</div>
-          <h3>Monitoreo remoto</h3>
-          <p>Consulta de datos y control mediante la plataforma prevista en el diseño.</p>
+        <article class="system-card" id="acceso">
+          <div class="system-symbol" aria-hidden="true">05</div>
+          <h3>Acceso biométrico</h3>
+          <p>El lector AS608/R307 compara huellas en su propio módulo y controla la chapa electromecánica. La plantilla biométrica no sale del lector.</p>
+          <small class="component-used"><b>Componentes utilizados</b> · AS608/R307 · OLED · Relé · Chapa solenoide</small>
         </article>
-        <article class="system-card">
-          <div class="system-symbol">⏻</div>
-          <h3>Continuidad operativa</h3>
-          <p>Medidas de protección y funcionamiento local contempladas en el proyecto.</p>
+        <article class="system-card" id="alarma">
+          <div class="system-symbol" aria-hidden="true">06</div>
+          <h3>Alarma perimetral</h3>
+          <p>El PIR requiere tres detecciones separadas al menos 15 segundos dentro de una ventana de 60 segundos, tras 60 segundos de estabilización.</p>
+          <small class="component-used"><b>Componentes utilizados</b> · HC-SR501 · Buzzer</small>
         </article>
       </div>
+      <p class="source-note"></p>
+      <div class="content-panel power-note"><h3>Alimentación del prototipo entregado</h3><p>Durante la demostración, el ESP32 se alimenta por USB. Hay un cargador externo de 5 V disponible para usar la entrada VIN si hiciera falta, pero esa no es la configuración utilizada en la demostración. La bomba, el ventilador y la chapa solenoide utilizan alimentación independiente de 12 V, con tierra común.</p><p>El sistema mide la humedad del sustrato; la evaluación de pH, conductividad eléctrica y nutrientes queda como ampliación posterior. Los MQ-135 y MQ-7 entregan índices relativos y no constituyen un detector certificado de monóxido de carbono.</p></div>
     </section>
 
     <!-- PRESUPUESTO -->
@@ -249,32 +241,34 @@
       </div>
 
       <div class="budget-summary">
-        <article class="metric-card">
-          <span class="metric-label">Presupuesto electrónico</span>
-          <strong>Q 2,039.00</strong>
-          <small>Según el importe reportado</small>
-        </article>
-        <article class="metric-card">
+        <a class="metric-card metric-link" href="#materials-budget" aria-label="Ver tabla de costos de materiales">
+          <span class="metric-label">Materiales ejecutados</span>
+          <strong>Q 1,551.00</strong>
+          <small>37 renglones · 53 unidades adquiridas</small>
+          <span class="metric-action">Consultar detalle <span aria-hidden="true">↘</span></span>
+        </a>
+        <a class="metric-card metric-link" href="#labor-budget" aria-label="Ver tabla de costos de mano de obra">
           <span class="metric-label">Mano de obra</span>
-          <strong>Q 2,005.00</strong>
-          <small>Según el presupuesto de trabajo</small>
-        </article>
+          <strong>Q 6,905.00</strong>
+          <small>156 horas de trabajo</small>
+          <span class="metric-action">Consultar detalle <span aria-hidden="true">↘</span></span>
+        </a>
         <article class="metric-card metric-dark">
-          <span class="metric-label">Suma de ambos conceptos</span>
-          <strong>Q 4,044.00</strong>
+          <span class="metric-label">Costo de la primera unidad</span>
+          <strong>Q 8,456.00</strong>
           <small>Materiales y mano de obra</small>
         </article>
       </div>
 
       <div class="budget-columns">
 
-        <div class="table-card">
+        <div class="table-card" id="materials-budget">
           <div class="table-heading">
             <div>
               <p class="eyebrow">Detalle 01</p>
               <h3>Componentes electrónicos</h3>
             </div>
-            <span class="table-total">Q 2,039.00</span>
+            <span class="table-total">Q 1,551.00</span>
           </div>
 
           <div class="table-scroll">
@@ -293,16 +287,16 @@
             </table>
           </div>
 
-          <p class="table-note">Materiales</p>
+          <p class="table-note">Materiales ejecutados: Q 1,551.00</p>
         </div>
 
-        <div class="table-card labor-card">
+        <div class="table-card labor-card" id="labor-budget">
           <div class="table-heading">
             <div>
               <p class="eyebrow">Detalle 02</p>
               <h3>Mano de obra</h3>
             </div>
-            <span class="table-total">Q 2,005.00</span>
+            <span class="table-total">Q 6,905.00</span>
           </div>
 
           <div class="table-scroll">
@@ -315,21 +309,23 @@
                   <th>Total</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr><td>Diseño y planificación</td><td>8</td><td>Q 30</td><td>Q 240</td></tr>
-                <tr><td>Ensamble y conexiones</td><td>12</td><td>Q 30</td><td>Q 360</td></tr>
-                <tr><td>Programación del ESP32</td><td>15</td><td>Q 35</td><td>Q 525</td></tr>
-                <tr><td>Integración con RainMaker</td><td>8</td><td>Q 35</td><td>Q 280</td></tr>
-                <tr><td>Pruebas y corrección</td><td>10</td><td>Q 30</td><td>Q 300</td></tr>
-                <tr><td>Documentación e informe</td><td>8</td><td>Q 25</td><td>Q 200</td></tr>
-                <tr><td>Ensayos y presentación</td><td>4</td><td>Q 25</td><td>Q 100</td></tr>
+              <tbody id="laborTable">
+                <tr><td>Diseño y planificación del sistema</td><td>12</td><td>Q 60.00</td><td>Q 660.00</td></tr>
+                <tr><td>Programación del firmware</td><td>50</td><td>Q 55.00</td><td>Q 2,750.00</td></tr>
+                <tr><td>Integración con la plataforma IoT</td><td>12</td><td>Q 55.00</td><td>Q 660.00</td></tr>
+                <tr><td>Pruebas de integración y resolución de fallas</td><td>15</td><td>Q 55.00</td><td>Q 825.00</td></tr>
+                <tr><td>Adquisición y cotización de componentes</td><td>6</td><td>Q 30.00</td><td>Q 180.00</td></tr>
+                <tr><td>Ensamble y cableado</td><td>25</td><td>Q 30.00</td><td>Q 750.00</td></tr>
+                <tr><td>Pruebas y validación del sistema</td><td>15</td><td>Q 30.00</td><td>Q 450.00</td></tr>
+                <tr><td>Documentación, blog y video</td><td>15</td><td>Q 30.00</td><td>Q 450.00</td></tr>
+                <tr><td>Ensayos y presentación final</td><td>6</td><td>Q 30.00</td><td>Q 180.00</td></tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Total</th>
-                  <th>65</th>
+                  <th>156</th>
                   <th></th>
-                  <th>Q 2,005</th>
+                  <th>Q 6,905.00</th>
                 </tr>
               </tfoot>
             </table>
@@ -337,12 +333,10 @@
         </div>
 
       </div>
-
-      <div class="contingency-note">
-        <span class="note-icon">＋</span>
-        <p>
-          <b>Contingencia reportada: Q 204.00.</b>
-        </p>
+      <div class="budget-insights">
+        <article class="content-panel"><h3>El cableado fue la mayor categoría</h3><p>Q 388.00, equivalente al 25 % de los materiales. El cable DuPont y la caja de adaptadores sumaron Q 228.00 que no estaban contemplados en la cotización inicial.</p></article>
+        <article class="content-panel"><h3>Costo de réplica</h3><p>Una unidad adicional se estima en Q 2,721.00, cerca del 32 % del costo de la primera, porque el trabajo de ingeniería, firmware y documentación ya existe.</p></article>
+        <article class="content-panel"><h3>Cómo se calculó la mano de obra</h3><p>89 horas de ingeniería suman Q 4,895.00; 67 horas técnicas suman Q 2,010.00. Las tarifas distinguen diseño, programación y diagnóstico del trabajo de ensamble y pruebas.</p></article>
       </div>
     </section>
 
@@ -464,26 +458,10 @@
       </div>
 
       <div class="risk-levels">
-        <div class="risk-level risk-low">
-          <span class="risk-dot"></span>
-          <div><b>Bajo</b><small>Menor impacto</small></div>
-          <strong>7</strong>
-        </div>
-        <div class="risk-level risk-medium">
-          <span class="risk-dot"></span>
-          <div><b>Medio</b><small>Impacto moderado</small></div>
-          <strong>15</strong>
-        </div>
-        <div class="risk-level risk-high">
-          <span class="risk-dot"></span>
-          <div><b>Alto</b><small>Impacto significativo</small></div>
-          <strong>10</strong>
-        </div>
-        <div class="risk-level risk-critical">
-          <span class="risk-dot"></span>
-          <div><b>Crítico</b><small>Mayor prioridad</small></div>
-          <strong>1</strong>
-        </div>
+        <div class="risk-level risk-low"><span class="risk-dot"></span><div><b>Bajo</b><small>Score 1–2</small></div><strong>18</strong></div>
+        <div class="risk-level risk-medium"><span class="risk-dot"></span><div><b>Medio</b><small>Score 3–4</small></div><strong>19</strong></div>
+        <div class="risk-level risk-high"><span class="risk-dot"></span><div><b>Alto</b><small>Score 6</small></div><strong>5</strong></div>
+        <div class="risk-level risk-critical"><span class="risk-dot"></span><div><b>Crítico</b><small>Score 9</small></div><strong>0</strong></div>
       </div>
 
       <div class="risk-dashboard">
@@ -508,15 +486,15 @@
               </div>
 
               <div class="risk-matrix">
-                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad alta, impacto bajo">3<br><small>Medio</small></button>
-                <button class="matrix-cell cell-high" data-risk-filter="high" aria-label="Probabilidad alta, impacto medio">6<br><small>Alto</small></button>
-                <button class="matrix-cell cell-critical" data-risk-filter="critical" aria-label="Probabilidad alta, impacto alto">9<br><small>Crítico</small></button>
-                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad media, impacto bajo">2<br><small>Bajo</small></button>
-                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad media, impacto medio">4<br><small>Medio</small></button>
-                <button class="matrix-cell cell-high" data-risk-filter="high" aria-label="Probabilidad media, impacto alto">6<br><small>Alto</small></button>
-                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad baja, impacto bajo">1<br><small>Bajo</small></button>
-                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad baja, impacto medio">2<br><small>Bajo</small></button>
-                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad baja, impacto alto">3<br><small>Medio</small></button>
+                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad alta, impacto bajo: 1 riesgo medio">1<br><small>Medio</small></button>
+                <button class="matrix-cell cell-high" data-risk-filter="high" aria-label="Probabilidad alta, impacto medio: 2 riesgos altos">2<br><small>Alto</small></button>
+                <button class="matrix-cell cell-critical" data-risk-filter="critical" aria-label="Probabilidad alta, impacto alto: cero riesgos críticos">0<br><small>Crítico</small></button>
+                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad media, impacto bajo: 2 riesgos bajos">2<br><small>Bajo</small></button>
+                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad media, impacto medio: 5 riesgos medios">5<br><small>Medio</small></button>
+                <button class="matrix-cell cell-high" data-risk-filter="high" aria-label="Probabilidad media, impacto alto: 3 riesgos altos">3<br><small>Alto</small></button>
+                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad baja, impacto bajo: 2 riesgos bajos">2<br><small>Bajo</small></button>
+                <button class="matrix-cell cell-low" data-risk-filter="low" aria-label="Probabilidad baja, impacto medio: 14 riesgos bajos">14<br><small>Bajo</small></button>
+                <button class="matrix-cell cell-medium" data-risk-filter="medium" aria-label="Probabilidad baja, impacto alto: 13 riesgos medios">13<br><small>Medio</small></button>
               </div>
 
               <div class="matrix-xlabels">
@@ -534,40 +512,14 @@
         </div>
 
         <div class="risk-stats">
-          <div class="subheading">
-            <div>
-              <p class="eyebrow">Resumen</p>
-              <h3>Distribución de riesgos</h3>
-            </div>
-          </div>
-
-          <div class="stat-row">
-            <span>Bajo</span>
-            <div class="stat-track"><i style="--value:21.2%;--stat-color:var(--risk-low)"></i></div>
-            <b>7 <small>21.2%</small></b>
-          </div>
-          <div class="stat-row">
-            <span>Medio</span>
-            <div class="stat-track"><i style="--value:45.5%;--stat-color:var(--risk-medium)"></i></div>
-            <b>15 <small>45.5%</small></b>
-          </div>
-          <div class="stat-row">
-            <span>Alto</span>
-            <div class="stat-track"><i style="--value:30.3%;--stat-color:var(--risk-high)"></i></div>
-            <b>10 <small>30.3%</small></b>
-          </div>
-          <div class="stat-row">
-            <span>Crítico</span>
-            <div class="stat-track"><i style="--value:3%;--stat-color:var(--risk-critical)"></i></div>
-            <b>1 <small>3.0%</small></b>
-          </div>
-
-          <div class="risk-total">
-            <span>Total identificado</span>
-            <strong>33</strong>
-          </div>
+          <div class="subheading"><div><p class="eyebrow">Resumen</p><h3>Distribución de riesgos</h3></div></div>
+          <div class="stat-row"><span>Bajo</span><div class="stat-track"><i style="--value:42.9%;--stat-color:var(--risk-low)"></i></div><b>18 <small>42.9%</small></b></div>
+          <div class="stat-row"><span>Medio</span><div class="stat-track"><i style="--value:45.2%;--stat-color:var(--risk-medium)"></i></div><b>19 <small>45.2%</small></b></div>
+          <div class="stat-row"><span>Alto</span><div class="stat-track"><i style="--value:11.9%;--stat-color:var(--risk-high)"></i></div><b>5 <small>11.9%</small></b></div>
+          <div class="stat-row"><span>Crítico</span><div class="stat-track"><i style="--value:0%;--stat-color:var(--risk-critical)"></i></div><b>0 <small>0%</small></b></div>
+          <div class="risk-total"><span>Total identificado</span><strong>42</strong></div>
+          <p class="matrix-caption">No quedan riesgos de clasificación crítica tras aplicar y verificar las mitigaciones descritas en el informe final.</p>
         </div>
-
       </div>
 
       <div class="risk-list-heading">
@@ -579,11 +531,11 @@
       </div>
 
       <div class="risk-filters" id="riskFilters">
-        <button class="filter-chip active" data-filter="all">Todos <span>33</span></button>
-        <button class="filter-chip" data-filter="low">Bajo <span>7</span></button>
-        <button class="filter-chip" data-filter="medium">Medio <span>15</span></button>
-        <button class="filter-chip" data-filter="high">Alto <span>10</span></button>
-        <button class="filter-chip" data-filter="critical">Crítico <span>1</span></button>
+        <button class="filter-chip active" data-filter="all">Todos <span>42</span></button>
+        <button class="filter-chip" data-filter="low">Bajo <span>18</span></button>
+        <button class="filter-chip" data-filter="medium">Medio <span>19</span></button>
+        <button class="filter-chip" data-filter="high">Alto <span>5</span></button>
+        <button class="filter-chip" data-filter="critical">Crítico <span>0</span></button>
       </div>
 
       <div class="risk-list" id="riskList">
@@ -767,11 +719,11 @@
         </div>
 
         <div class="reference-links">
-          <a href="https://www.espressif.com/en/products/socs/esp32" target="_blank" rel="noopener noreferrer">Espressif Systems ↗</a>
-          <a href="https://learn.adafruit.com/" target="_blank" rel="noopener noreferrer">Adafruit ↗</a>
-          <a href="https://learn.sparkfun.com/" target="_blank" rel="noopener noreferrer">SparkFun ↗</a>
-          <a href="https://thingspeak.com/" target="_blank" rel="noopener noreferrer">ThingSpeak ↗</a>
-          <a href="https://docs.blynk.io/" target="_blank" rel="noopener noreferrer">Blynk ↗</a>
+          <a href="https://www.espressif.com/en/products/socs/esp32" target="_blank" rel="noopener noreferrer">Espressif Systems · ESP32</a>
+          <a href="https://rainmaker.espressif.com/" target="_blank" rel="noopener noreferrer">ESP RainMaker</a>
+          <a href="https://docs.espressif.com/projects/arduino-esp32/en/latest/" target="_blank" rel="noopener noreferrer">Arduino core para ESP32</a>
+          <a href="componentes.html">Resumen de componentes</a>
+          <a href="aprendimos.html">Lo que aprendimos</a>
         </div>
       </div>
     </section>
@@ -785,11 +737,57 @@
       <span>Invernadero <b>Automatizado</b></span>
     </a>
     <p>Universidad Mariano Gálvez de Guatemala · Electrónica Digital</p>
+    <div class="footer-extra"><a href="componentes.html">Componentes</a><a href="aprendimos.html">Lo que aprendimos</a></div>
     <a href="#inicio" class="back-top">Volver al inicio ↑</a>
   </footer>
 
-  <!-- JavaScript: datos y presupuesto, y luego galería/video/menú -->
+  <!-- JavaScript: datos y presupuesto -->
   <script src="script.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var overview = document.querySelector(".subsystem-overview");
+      if (!overview) return;
+      var cards = overview.querySelectorAll("a.system-card");
+      cards.forEach(function (card) {
+        var targetId = (card.getAttribute("href") || "").slice(1);
+        var source = document.getElementById(targetId);
+        if (!source) return;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-expanded", "false");
+        var hint = document.createElement("span");
+        hint.className = "subsystem-toggle-hint";
+        hint.textContent = "Ver detalles +";
+        card.appendChild(hint);
+        card.addEventListener("click", function (event) {
+          event.preventDefault();
+          var wasOpen = card.getAttribute("aria-expanded") === "true";
+          cards.forEach(function (other) {
+            other.setAttribute("aria-expanded", "false");
+            var oldDetail = other.querySelector(".subsystem-inline-detail");
+            if (oldDetail) oldDetail.remove();
+            var oldHint = other.querySelector(".subsystem-toggle-hint");
+            if (oldHint) oldHint.textContent = "Ver detalles +";
+          });
+          if (wasOpen) return;
+          var detail = document.createElement("div");
+          detail.className = "subsystem-inline-detail";
+          detail.innerHTML = source.innerHTML;
+          card.appendChild(detail);
+          card.setAttribute("aria-expanded", "true");
+          hint.textContent = "Ocultar detalles −";
+        });
+        card.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            card.click();
+          }
+        });
+      });
+    }());
+
+    
+  </script>
   <script src="galeria.js"></script>
 
 </body>

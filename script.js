@@ -6,39 +6,43 @@
 
 
 const materiales = [
-  ["Termoencogible (Termofit)", 1, 5, 5],
-  ["Pulsador físico", 1, 5, 5],
-  ["Manguera para riego (2 m)", 2, 4, 8],
-  ["LED indicador", 2, 5, 10],
-  ["Módulo LED RGB", 1, 12, 12],
-  ["Conectores Jack DC hembra", 3, 4, 12],
-  ["Conversor de nivel lógico (4 ch)", 1, 15, 15],
-  ["Módulo de buzzer", 1, 15, 15],
-  ["Cableado (jumpers)", 1, 18, 18],
-  ["Fuente de poder 5V (USB)", 1, 20, 20],
-  ["Módulo relé (1 canal)", 1, 20, 20],
-  ["Módulo relé adicional", 1, 20, 20],
-  ["Kit de protección electrónica", 1, 20, 20],
-  ["Sensor ultrasónico HC-SR04", 1, 25, 25],
-  ["Bomba de agua 12V", 1, 25, 25],
-  ["Sensor PIR", 1, 25, 25],
-  ["Módulo MAX485", 1, 25, 25],
-  ["Sensor de calidad de aire MQ135", 1, 31, 31],
-  ["Sensor de monóxido de carbono MQ7", 1, 31, 31],
-  ["Módulo L298N", 1, 33, 33],
+  ["ESP32 DevKit 38 pines", 1, 135, 135],
+  ["Lector de huella AS608 / R307", 1, 230, 230],
+  ["Chapa electromecánica solenoide", 1, 110, 110],
+  ["Ventilador de 12 V", 1, 60, 60],
+  ["Pantalla OLED SSD1306", 1, 50, 50],
+  ["Luz de crecimiento LED", 1, 40, 40],
+  ["Cargador de 12 V", 1, 55, 55],
+  ["Cargador de 5 V", 1, 40, 40],
+  ["Regulador de voltaje", 1, 17, 17],
+  ["Shield de expansión para ESP32", 1, 55, 55],
+  ["Cable plano 28 AWG", 1, 39, 39],
+  ["Cable DuPont, 5 metros", 1, 160, 160],
+  ["Adaptadores DuPont, caja", 1, 68, 68],
+  ["Cableado de interconexión", 1, 18, 18],
+  ["Sensor DHT11", 1, 35, 35],
   ["Sensor BH1750", 1, 35, 35],
-  ["Ribbon Cable 28AWG", 1, 39, 39],
-  ["Fuente de poder 12V", 1, 40, 40],
-  ["Luz de crecimiento (1 m)", 1, 40, 40],
-  ["Shield de expansión ESP32", 1, 50, 50],
-  ["Pantalla LCD / OLED", 1, 50, 50],
-  ["Ventilador 12V", 1, 60, 60],
-  ["Sensor DHT21 (AM2301)", 1, 71, 71],
-  ["Chapa electromecánica solenoide 12V", 1, 110, 110],
-  ["Sensor de huella AS608/R307", 1, 150, 150],
-  ["ESP32 38 pines", 1, 135, 160],
-  ["Sistema / batería UPS 12V-5V", 1, 180, 180],
-  ["Sensor de suelo 7 en 1 (RS485)", 1, 475, 475]
+  ["Sonda de humedad FC-28", 1, 31, 31],
+  ["Sensor ultrasónico HC-SR04", 1, 25, 25],
+  ["Sensor PIR HC-SR501", 2, 25, 50],
+  ["Sensor MQ-135", 1, 31, 31],
+  ["Sensor MQ-7", 1, 31, 31],
+  ["Módulo L298N", 1, 33, 33],
+  ["Módulo de relé de dos canales", 1, 34, 34],
+  ["Bomba de agua sumergible", 1, 25, 25],
+  ["Conversor bidireccional de niveles", 1, 23, 23],
+  ["Módulo de buzzer pasivo", 1, 15, 15],
+  ["Diodos 1N4007", 2, 5, 10],
+  ["Resistencias de 10 kΩ", 5, 1, 5],
+  ["Resistencias de 20 kΩ", 5, 1, 5],
+  ["Borneras de distribución", 2, 10, 20],
+  ["Conectores Jack DC", 3, 4, 12],
+  ["Conectores Jack DC hembra", 2, 7, 14],
+  ["Placa perforada 5 × 5 cm", 1, 8, 8],
+  ["Protoboard de 40 puntos", 1, 9, 9],
+  ["LED indicadores", 2, 5, 10],
+  ["Manguera para riego", 2, 4, 8],
+  ["Termoencogible", 1, 5, 5]
 ];
 
 /* Convierte un número a formato monetario en quetzales. */
@@ -72,20 +76,6 @@ function cargarMateriales() {
     tabla.appendChild(fila);
   });
 
-  const filaContingencia = document.createElement("tr");
-
-  [
-    "Contingencia (10%)",
-    "1",
-    formatoMoneda(204),
-    formatoMoneda(204)
-  ].forEach(function(valor) {
-    const celda = document.createElement("td");
-    celda.textContent = valor;
-    filaContingencia.appendChild(celda);
-  });
-
-  tabla.appendChild(filaContingencia);
 }
 
 cargarMateriales();
@@ -188,270 +178,48 @@ cargarFases();
 
 
 const riesgos = [
-  {
-    codigo: "A1",
-    nombre: "Falla o desconexión del sensor de humedad del suelo",
-    impacto: "Riego continuo, desperdicio de agua y posible daño al cultivo.",
-    mitigacion: "Temporizador watchdog: la bomba se apaga tras un máximo de 3 minutos de riego continuo.",
-    nivel: "high",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A2",
-    nombre: "La bomba funciona con el tanque vacío",
-    impacto: "Daño al motor de la bomba.",
-    mitigacion: "El sensor ultrasónico deshabilita la bomba cuando el nivel baja del 10% y genera un aviso.",
-    nivel: "high",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A3",
-    nombre: "Desbordamiento del tanque durante el llenado manual",
-    impacto: "Pérdida de agua e inundación del área.",
-    mitigacion: "Alarma sonora constante cuando el nivel supera el 90% de la capacidad.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A4",
-    nombre: "Falsos disparos de la alarma por corrientes de aire caliente sobre el PIR",
-    impacto: "Alertas innecesarias y desconfianza en el sistema.",
-    mitigacion: "Se exige una señal ALTA continua durante al menos 3 segundos.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A5",
-    nombre: "Intentos de acceso no autorizado por fuerza bruta en el lector de huellas",
-    impacto: "Vulneración del control de acceso.",
-    mitigacion: "Bloqueo del sensor durante 60 segundos después de 5 intentos fallidos consecutivos y aviso al operador.",
-    nivel: "critical",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A6",
-    nombre: "Cambios en las personas autorizadas a ingresar",
-    impacto: "Ingreso de una persona que ya no debería tener acceso.",
-    mitigacion: "Revocación remota de una huella por ID o alias, sin borrar toda la base.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A7",
-    nombre: "Corte eléctrico prolongado que agota la batería UPS",
-    impacto: "El operador podría no abrir la puerta biométrica.",
-    mitigacion: "Emergency Jack externo de 12V para energizar temporalmente la chapa y el ESP32.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A8",
-    nombre: "Lecturas inválidas por sensor dañado o desconectado",
-    impacto: "Decisiones de control erróneas que podrían dañar el cultivo.",
-    mitigacion: "Modo Safe State, LED RGB naranja, aviso al operador y actuadores en ciclo pasivo por temporizador.",
-    nivel: "high",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A9",
-    nombre: "Pérdida de conexión Wi-Fi o de servidores RainMaker",
-    impacto: "Pérdida de monitoreo y control remoto.",
-    mitigacion: "El sistema continúa operando localmente mientras se restablece la conexión.",
-    nivel: "low",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A10",
-    nombre: "Corte de energía que borra la configuración vigente",
-    impacto: "Pérdida de umbrales, huellas registradas y estado de alarma.",
-    mitigacion: "Persistencia de la configuración en memoria no volátil NVS.",
-    nivel: "low",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A11",
-    nombre: "Picos de corriente al energizar la bomba o la chapa solenoide",
-    impacto: "Reinicios inesperados del ESP32 (brownout).",
-    mitigacion: "Capacitor de 1000 µF, diodos flyback 1N4007, fusible de 5A y tierra común.",
-    nivel: "low",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A12",
-    nombre: "El operador necesita regar sin tener su teléfono",
-    impacto: "Imposibilidad de activar el riego a tiempo.",
-    mitigacion: "Pulsador físico local que activa la bomba durante 60 segundos.",
-    nivel: "high",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "A13",
-    nombre: "Exposición del lector biométrico al sol o condensación",
-    impacto: "Daño o falla de lectura del sensor óptico.",
-    mitigacion: "Gabinete estanco con visera protectora superior.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "B1",
-    nombre: "Retraso en una fase crítica del cronograma",
-    impacto: "Atraso de las fases posteriores y de la entrega.",
-    mitigacion: "Revisión semanal, holgura entre fases críticas y reasignación si el atraso supera el 20%.",
-    nivel: "high",
-    responsable: "Jorge Daniel Aguilar García"
-  },
-  {
-    codigo: "B2",
-    nombre: "Dependencia entre subsistemas",
-    impacto: "La integración de firmware y las pruebas pueden retrasarse.",
-    mitigacion: "Diseño modular, pruebas por subsistema e integración incremental.",
-    nivel: "medium",
-    responsable: "Jorge Daniel Aguilar García"
-  },
-  {
-    codigo: "B3",
-    nombre: "Ausencia temporal de un integrante",
-    impacto: "Sobrecarga del equipo y atraso puntual.",
-    mitigacion: "Bitácora técnica compartida y revisión cruzada de tareas.",
-    nivel: "low",
-    responsable: "Jorge Daniel Aguilar García"
-  },
-  {
-    codigo: "C1",
-    nombre: "Retraso de componentes importados, especialmente la sonda 7 en 1",
-    impacto: "Bloqueo del módulo de suelo y retraso general.",
-    mitigacion: "Compra anticipada, proveedor alterno y holgura de al menos una semana.",
-    nivel: "high",
-    responsable: "Angela Gabriela Cujcuj Choy"
-  },
-  {
-    codigo: "C2",
-    nombre: "Variación de precio o desabastecimiento local",
-    impacto: "Sobrecosto o sustitución de componentes.",
-    mitigacion: "Cotizar con al menos dos proveedores y utilizar el margen de contingencia si corresponde.",
-    nivel: "medium",
-    responsable: "Angela Gabriela Cujcuj Choy"
-  },
-  {
-    codigo: "D1",
-    nombre: "La contingencia de Q204 resulta insuficiente",
-    impacto: "Aporte adicional no presupuestado.",
-    mitigacion: "Registro actualizado de gastos y aprobación conjunta de gastos no previstos.",
-    nivel: "low",
-    responsable: "Angela Gabriela Cujcuj Choy"
-  },
-  {
-    codigo: "E1",
-    nombre: "Curva de aprendizaje en ESP32, RainMaker y RS485",
-    impacto: "Retrasos por errores durante programación e integración.",
-    mitigacion: "Capacitación cruzada y revisión de documentación oficial y ejemplos.",
-    nivel: "high",
-    responsable: "Jorge Daniel Aguilar García"
-  },
-  {
-    codigo: "E2",
-    nombre: "Conocimiento técnico crítico concentrado en una persona",
-    impacto: "Bloqueo de una fase si esa persona no está disponible.",
-    mitigacion: "Programación en pareja y documentación técnica de los módulos críticos.",
-    nivel: "high",
-    responsable: "Jorge Daniel Aguilar García"
-  },
-  {
-    codigo: "F1",
-    nombre: "Incompatibilidad entre librerías o conflictos de pines",
-    impacto: "Lecturas erróneas, bloqueos o fallas del microcontrolador.",
-    mitigacion: "Probar sensores por separado, fijar versiones de librerías y revisar pines e interrupciones.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "F2",
-    nombre: "Fallo durante actualización de firmware OTA",
-    impacto: "Dispositivo sin conectividad o inestable.",
-    mitigacion: "Mantener firmware estable de respaldo y actualizar en ventanas de prueba controladas.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "G1",
-    nombre: "Protección inadecuada de datos biométricos",
-    impacto: "Exposición de datos sensibles del personal.",
-    mitigacion: "Las plantillas se guardan en el módulo AS608/R307, no como imágenes, y no se exportan a la nube.",
-    nivel: "medium",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "G2",
-    nombre: "Exposición de credenciales Wi-Fi/RainMaker por acceso físico",
-    impacto: "Control no autorizado del sistema.",
-    mitigacion: "Gabinete con cerradura, contraseñas robustas y deshabilitación del puerto USB/JTAG en la versión final.",
-    nivel: "low",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "H1",
-    nombre: "Degradación por polvo, calor y humedad de Zacapa",
-    impacto: "Menor vida útil y fallas prematuras.",
-    mitigacion: "Gabinete con protección adecuada, ventilación pasiva y revisión de sellos y viseras.",
-    nivel: "medium",
-    responsable: "José Daniel Chacón Najarro"
-  },
-  {
-    codigo: "I1",
-    nombre: "Fallo del prototipo durante la presentación",
-    impacto: "Afectación de la defensa final.",
-    mitigacion: "Ensayo general el día previo y video de respaldo grabado con anticipación.",
-    nivel: "high",
-    responsable: "Jorge Daniel Aguilar García"
-  },
-  {
-    codigo: "I2",
-    nombre: "Falta de Wi-Fi estable durante la defensa",
-    impacto: "No se muestra telemetría ni control remoto en tiempo real.",
-    mitigacion: "Confirmar la red del lugar o preparar un punto de acceso móvil de respaldo.",
-    nivel: "medium",
-    responsable: "Jorge Daniel Aguilar García"
-  },
-  {
-    codigo: "J1",
-    nombre: "Ausencia de esquema de soporte post-entrega",
-    impacto: "El cliente no sabe a quién acudir ante una falla.",
-    mitigacion: "Entregar manual técnico y de usuario y definir un periodo básico de soporte.",
-    nivel: "medium",
-    responsable: "José Daniel Chacón Najarro"
-  },
-  {
-    codigo: "J2",
-    nombre: "Disponibilidad limitada de repuestos a mediano plazo",
-    impacto: "Reparaciones más lentas ante una falla.",
-    mitigacion: "Documentar proveedores y referencias exactas de componentes críticos.",
-    nivel: "low",
-    responsable: "José Daniel Chacón Najarro"
-  },
-  {
-    codigo: "K1",
-    nombre: "La chapa fail-secure impide salir durante un corte de energía",
-    impacto: "Riesgo para las personas en una emergencia.",
-    mitigacion: "Instalar apertura manual desde el interior, independiente del suministro eléctrico.",
-    nivel: "high",
-    responsable: "Belsin David Moscoso Pérez"
-  },
-  {
-    codigo: "K2",
-    nombre: "Pérdida del firmware o configuración por falta de respaldo",
-    impacto: "Pérdida de trabajo y retraso severo.",
-    mitigacion: "Repositorio GitHub con commits regulares y una copia local adicional.",
-    nivel: "medium",
-    responsable: "Jorge Israel Toc Obregon"
-  },
-  {
-    codigo: "K3",
-    nombre: "Cambio de alcance solicitado por el cliente a mitad del proyecto",
-    impacto: "Retrabajo, desvío de recursos y posible incumplimiento del cronograma.",
-    mitigacion: "Documentar el alcance y evaluar formalmente tiempo y costo de cualquier cambio.",
-    nivel: "medium",
-    responsable: "José Daniel Chacón Najarro"
-  }
+  { codigo: "A1", nombre: "Falla del sensor de humedad", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Riego por pulsos, medición entre pulsos y validación de la lectura.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "A2", nombre: "Bomba con depósito vacío", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Bloqueo del riego por debajo del 15 % del nivel y reintento diferido.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "A3", nombre: "Desbordamiento del depósito", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "El llenado es manual en esta fase; el abastecimiento automático queda previsto.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "A4", nombre: "Falsos disparos de la alarma", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Tres detecciones separadas al menos 15 segundos en una ventana de 60 segundos, tras estabilización.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "A5", nombre: "Fuerza bruta en el lector biométrico", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Bloqueo durante 60 segundos tras cinco intentos fallidos, con conteo y aviso.", nivel: "high", responsable: "Equipo del proyecto" },
+  { codigo: "A6", nombre: "Cambios en las personas autorizadas", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Revocación remota de una huella por identificador.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "A7", nombre: "Corte eléctrico prolongado", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Batería de respaldo y conector de emergencia previstos para la instalación definitiva.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "A8", nombre: "Lecturas inválidas de sensores", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Validación de rango, descarte de lectura y notificación.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "A9", nombre: "Pérdida de conexión inalámbrica", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "El control local continúa sin bloquearse a la espera de la red.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "A10", nombre: "Borrado de configuración", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Persistencia de umbrales, huellas y estado en memoria no volátil.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "A11", nombre: "Picos de corriente inductivos", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Diodos internos del L298N y diodo 1N4007 en paralelo con la bobina de la chapa.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "A12", nombre: "Riego manual sin teléfono móvil", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "El pulsador físico local está previsto para la instalación definitiva.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "A13", nombre: "Exposición del lector al clima", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Visera protectora instalada sobre el lector.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "B1", nombre: "Retraso en una fase crítica", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Seguimiento del cronograma y redistribución de tareas.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "B2", nombre: "Dependencia entre subsistemas", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Integración por etapas y pruebas de los módulos.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "B3", nombre: "Redistribución por ausencia de integrante", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Redistribución de tareas dentro del equipo.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "C1", nombre: "Retraso de componentes importados", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Se utilizó una solución alternativa para continuar el cronograma.", nivel: "high", responsable: "Equipo del proyecto" },
+  { codigo: "C2", nombre: "Variación de precio o desabastecimiento", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Comparación de precios y sustituciones compatibles.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "D1", nombre: "Margen de contingencia insuficiente", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "El margen de contingencia previsto no llegó a utilizarse.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "E1", nombre: "Curva de aprendizaje del equipo", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "La dedicación adicional al diagnóstico de interfaces quedó documentada.", nivel: "high", responsable: "Equipo del proyecto" },
+  { codigo: "E2", nombre: "Concentración del conocimiento técnico", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Documentación técnica y repositorio del proyecto.", nivel: "high", responsable: "Equipo del proyecto" },
+  { codigo: "F1", nombre: "Conflicto entre librerías", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Se corrigió la inicialización del bus I2C compartido.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "F2", nombre: "Fallo en actualización remota de firmware", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Riesgo de software contemplado en el análisis consolidado.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "G1", nombre: "Protección de datos biométricos", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "La plantilla permanece en el módulo lector y no se transmite por la red.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "G2", nombre: "Exposición de credenciales", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Riesgo de seguridad de información contemplado en el análisis consolidado.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "H1", nombre: "Degradación por clima de la región", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Protección física de los componentes expuestos.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "I1", nombre: "Fallo del prototipo en la demostración", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Pruebas de validación e integración realizadas antes de la presentación.", nivel: "high", responsable: "Equipo del proyecto" },
+  { codigo: "I2", nombre: "Cobertura inalámbrica en la defensa", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "La operación local no depende de la conectividad; telemetría sí.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "J1", nombre: "Soporte técnico posterior a la entrega", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Documentación técnica para facilitar el mantenimiento.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "J2", nombre: "Disponibilidad de repuestos", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Componentes y repuestos identificados en el presupuesto.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "K1", nombre: "Salida de emergencia con chapa cerrada", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Para instalación definitiva se requiere apertura manual interior.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "K2", nombre: "Pérdida de firmware sin respaldo", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Repositorio de control de versiones con firmware y documentación.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "K3", nombre: "Cambio de alcance solicitado", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Riesgo de gestión registrado en el análisis consolidado.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "L1", nombre: "Adaptación de niveles por exceso", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "El HC-SR501 se conecta directamente porque su salida ya es compatible con 3.3 V.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "L2", nombre: "Chapa energizada al desconectar la placa", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Resistencia de 10 kΩ entre el pin de control y la alimentación del relé, instalada y verificada.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "L3", nombre: "Presupuesto de corriente del puerto USB", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Ensayo a plena carga realizado; cargador externo disponible como alternativa.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "L4", nombre: "Transistor sin corte en el buzzer", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Se elevó la señal de control mediante el conversor de nivel.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "L5", nombre: "Librería reconfigurando el bus", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "La pantalla se inicializa sin reconfigurar el periférico y se fija una velocidad común.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "L6", nombre: "Doble gobierno de un actuador", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Una sola función toma la decisión del ventilador con las cuatro lecturas.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "L7", nombre: "Reintentos sin intervalo en el riego", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Se incorporó un tiempo para el próximo intento y verificación previa del nivel.", nivel: "low", responsable: "Equipo del proyecto" },
+  { codigo: "L8", nombre: "Sincronización del registro de huellas", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Rediseño del registro y verificación de integridad entre ambos almacenes.", nivel: "medium", responsable: "Equipo del proyecto" },
+  { codigo: "L9", nombre: "Terminales reservados de la placa", impacto: "Riesgo documentado en el análisis consolidado del informe final.", mitigacion: "Los seis terminales asociados a la memoria flash se excluyeron del diseño.", nivel: "medium", responsable: "Equipo del proyecto" }
 ];
 
 /* Texto que verá el visitante para cada nivel. */
@@ -528,6 +296,18 @@ function cargarRiesgos(filtro = "all") {
 }
 
 cargarRiesgos();
+
+/* Mantiene los contadores de la interfaz sincronizados con los 42 riesgos del informe. */
+(function actualizarContadoresRiesgo() {
+  const niveles = { low: 0, medium: 0, high: 0, critical: 0 };
+  riesgos.forEach(function (riesgo) { niveles[riesgo.nivel] += 1; });
+  document.querySelectorAll(".filter-chip").forEach(function (boton) {
+    const nivel = boton.dataset.filter;
+    const contador = boton.querySelector("span");
+    if (!contador) return;
+    contador.textContent = nivel === "all" ? String(riesgos.length) : String(niveles[nivel] || 0);
+  });
+})();
 
 
 /* =========================================

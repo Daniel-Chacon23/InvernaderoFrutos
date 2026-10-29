@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lecciones técnicas obtenidas durante la construcción del invernadero automatizado.">
+
+  <title>Lo que aprendimos | Invernadero Automatizado</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mejoras.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html#inicio">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span>Invernadero <b>Automatizado</b></span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="componentes.html">Componentes</a>
+      <a href="aprendimos.html" aria-current="page">Lo que aprendimos</a>
+    </nav>
+  </header>
+
+  <main class="section lessons-page">
+
+    <div class="section-heading">
+      <p class="eyebrow">Registro de integración</p>
+      <h1>Lo que aprendimos</h1>
+      <p>
+        Ocho lecciones derivadas de mediciones, pruebas y fallos
+        documentados durante la construcción del prototipo.
+      </p>
+    </div>
+
+    <article class="lesson-card">
+      <span class="lesson-number">01</span>
+      <h2>La adaptación depende de la señal, no solo de la alimentación.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        El HC-SR501 se alimenta a 5 V, pero su salida ya es de 3.3 V;
+        el conversor añadido por precaución mantenía la señal en alto.
+      </p>
+      <a href="index.html?caso=alarma#solucion">
+        Consultar el caso completo
+      </a>
+    </article>
+
+    <article class="lesson-card">
+      <span class="lesson-number">02</span>
+      <h2>Un divisor resistivo divide tensión, no entrega potencia.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        Un divisor de 10 kΩ y 20 kΩ entrega 3.33 V en vacío,
+        pero solo 17 µA; el FC-28 requiere aproximadamente 5 mA.
+        En cambio, el divisor sí atenúa la señal analógica de un MQ.
+      </p>
+      <a href="index.html?caso=riego#solucion">
+        Consultar el caso completo
+      </a>
+    </article>
+
+    <article class="lesson-card">
+      <span class="lesson-number">03</span>
+      <h2>El retardo del sensor debe formar parte del control.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        El agua tarda unos diez segundos en llegar a la profundidad
+        de la sonda. Tres pulsos de un segundo llevaron la humedad
+        del 33.5 % al 61.4 %.
+      </p>
+      <a href="index.html?caso=riego#solucion">
+        Consultar el caso completo
+      </a>
+    </article>
+
+    <article class="lesson-card">
+      <span class="lesson-number">04</span>
+      <h2>El nivel lógico alto no siempre significa corte de un transistor.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        En el buzzer, el emisor PNP está conectado a 5 V y el GPIO
+        entrega 3.3 V; esa diferencia mantiene el transistor conduciendo.
+      </p>
+      <a href="index.html?caso=alarma#solucion">
+        Consultar el caso completo
+      </a>
+    </article>
+
+    <article class="lesson-card">
+      <span class="lesson-number">05</span>
+      <h2>El presupuesto de corriente debe considerarse desde el diseño.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        La integración del ESP32 con Wi-Fi y el lector biométrico
+        provocó reinicios por presupuesto de corriente; se incorporó
+        un regulador y se hizo un ensayo a plena carga.
+      </p>
+      <a href="index.html#presupuesto">
+        Consultar el presupuesto del proyecto
+      </a>
+    </article>
+
+    <article class="lesson-card">
+      <span class="lesson-number">06</span>
+      <h2>También hay que diseñar qué ocurre cuando el programa deja de ejecutarse.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        GPIO 18 queda en alta impedancia al apagar el ESP32 y el relé
+        es activo en bajo; una resistencia de 10 kΩ mantiene el estado
+        de control definido.
+      </p>
+      <a href="index.html?caso=acceso#solucion">
+        Consultar el caso completo
+      </a>
+    </article>
+
+    <article class="lesson-card">
+      <span class="lesson-number">07</span>
+      <h2>Varios síntomas pueden compartir una sola causa raíz.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        El informe documenta tres síntomas del buzzer —sonido débil,
+        calentamiento en reposo y consumo similar en distintas
+        frecuencias— asociados al transistor que no llegaba al corte.
+      </p>
+      <a href="index.html?caso=alarma#solucion">
+        Consultar el caso completo
+      </a>
+    </article>
+
+    <article class="lesson-card">
+      <span class="lesson-number">08</span>
+      <h2>El cableado puede ser la mayor categoría del presupuesto.</h2>
+      <h3>Evidencia del proyecto</h3>
+      <p>
+        Q 388.00, el 25 % de Q 1,551.00; de ese monto,
+        Q 228.00 correspondieron a cable DuPont y adaptadores no previstos.
+      </p>
+      <a href="componentes.html">
+        Consultar el caso completo
+      </a>
+    </article>
+
+    <section class="content-panel">
+      <h2>Comprueba tu criterio</h2>
+
+      <details>
+        <summary>
+          Un módulo se alimenta con 5 V. ¿Su señal necesita conversor?
+        </summary>
+        <p>
+          Depende de lo que entregue el pin de señal, no solo de la
+          alimentación. Una salida de 3.3 V compatible puede conectarse
+          directamente; una señal analógica de 0 a 5 V que llega a un
+          ADC del ESP32 necesita atenuación, por ejemplo con un divisor
+          resistivo.
+        </p>
+      </details>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <a href="index.html#inicio">Volver a la portada</a>
+    <a href="componentes.html">Resumen de componentes</a>
+  </footer>
+</body>
+</html>
